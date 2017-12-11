@@ -225,7 +225,7 @@ def problem0b(n):
            since there are 46 primes between 2 and 200.
      """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ####################################################################
@@ -235,10 +235,9 @@ def problem0b(n):
     ####################################################################
     # ------------------------------------------------------------------
     count = 0
-    for k in range(n):
-        if k > 2:
-            if is_prime(n) == True:
-                count = count + 1
+    for k in range(n - 1):
+        if is_prime(k + 2) == True:
+            count = count + 1
     return(count)
 
 def run_test_problem0c():
@@ -298,7 +297,7 @@ def problem0c(circle, n, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ####################################################################
@@ -307,6 +306,17 @@ def problem0c(circle, n, window):
     ####################################################################
     # ------------------------------------------------------------------
 
+    circle.attach_to(window)
+    window.render(.5)
+
+    center = circle.center
+    x = center.x
+    y = center.y
+
+    for k in range(n):
+        circle2 = rg.Circle(rg.Point(x + (circle.radius*2)*(k + 1), y),circle.radius)
+        circle2.attach_to(window)
+        window.render(.5)
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
