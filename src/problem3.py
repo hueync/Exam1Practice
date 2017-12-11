@@ -106,7 +106,7 @@ def run_test_problem3a():
     expected = 127
     answer = problem3a(window4, point, 13)
     print()
-    print('Test 1 expected:', expected)
+    print('Test 4 expected:', expected)
     print('       actual:  ', answer)
 
     window4.close_on_mouse_click()
@@ -161,13 +161,11 @@ def problem3a(window, point, n):
     # ------------------------------------------------------------------
     point1 = rg.Point(point.x, point.y)
     point2 = rg.Point(point1.x, point1.y + 50)
-    linef = rg.Line(point1, point2)
-    linef.attach_to(window)
-    window.render(.15)
+
     thickness = 1
     sum_thing_thick = 0
     for k in range(n):
-        move_point = rg.Point(point1.x + 20 * (k + 1), point1.y + 10 * (k + 1))
+        move_point = rg.Point(point1.x + 20 * (k ), point1.y + 10 * (k ))
         move_point2 = rg.Point(move_point.x, move_point.y + 50)
         line = rg.Line(move_point, move_point2)
         line.thickness = thickness
@@ -237,21 +235,21 @@ def problem3b(m, point1):
         :type point1: rg.Point
     """
     window = rg.RoseWindow(400, 650)
-    point = point1
-    point2 = rg.Point(point.x, point.y + 50)
-    linef = rg.Line(point, point2)
-    linef.attach_to(window)
-    window.render(.15)
-    thickness = 1
-    for k in range(3):
-        move_point = rg.Point(point.x + 20 * (k + 1), point.y + 10 * (k + 1))
-        move_point2 = rg.Point(move_point.x, move_point.y + 50)
-        line = rg.Line(move_point, move_point2)
-        line.thickness = thickness
-    for k in range
+    total = 0
+    for k in range(m):
+        total = total + problem3a(window,point1,3 + 2*k)
+        point1.y = point1.y + 60
+    window.close_on_mouse_click()
+    return total
+
+
+
+
+
+    window.close_on_mouse_click()
 
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ####################################################################
